@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 481 491" role="img" aria-labelledby="title desc">
+<title>Plus One</title><desc>Folha de maple estilizada com +1 integrado.</desc>
+<defs>
+  <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D6B6C0"/><stop offset="0.5" stop-color="#9C7584"/><stop offset="1" stop-color="#835A69"/></linearGradient>
+  <linearGradient id="one" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7E8EC" stop-opacity=".62"/><stop offset="1" stop-color="#D6B6C0" stop-opacity=".25"/></linearGradient>
+</defs>
+<path d="M 239,61 L 203,127 L 192,128 L 163,114 L 181,221 L 171,223 L 128,175 L 113,203 L 58,193 L 74,259 L 50,274 L 142,353 L 134,391 L 227,378 L 232,382 L 231,418 L 247,420 L 247,383 L 253,378 L 345,391 L 336,361 L 338,352 L 429,273 L 405,258 L 421,193 L 366,203 L 351,175 L 308,224 L 298,220 L 316,114 L 288,128 L 276,127 Z" fill="url(#leaf)"/>
+<path d="M274 127 C269 151 252 168 228 181 L209 192 L209 216 L239 216 L239 377 L298 377 L298 221 C298 187 307 151 316 114 L288 128 Z" fill="url(#one)" opacity=".92"/>
+<path d="M148 247 H170 V225 C170 218 174 215 181 215 H190 C197 215 201 219 201 226 V247 H223 C230 247 234 251 234 258 V268 C234 275 230 279 223 279 H201 V302 C201 309 197 313 190 313 H181 C174 313 170 309 170 302 V279 H148 C141 279 137 275 137 268 V258 C137 251 141 247 148 247 Z" fill="#29121B" opacity=".88"/>
+</svg>

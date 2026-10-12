@@ -1,0 +1,1 @@
+Tipos de domínio compartilhados serão extraídos aqui ao migrar o English Profile.

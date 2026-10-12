@@ -1,0 +1,796 @@
+/* English Profile React — layout isolado, header institucional é o mesmo componente */
+.po-profile-page{height:100dvh;min-height:520px;display:flex;flex-direction:column;overflow:hidden;background:var(--bg,#150b0f);color:var(--text,#f7eaf0)}
+.po-profile-page .site-header{flex:0 0 auto;position:relative;z-index:50}
+.po-profile-layout{flex:1;display:flex;min-height:0;overflow:hidden}
+.po-profile-hub{width:238px;flex:0 0 auto;display:flex;flex-direction:column;justify-content:space-between;padding:30px 12px 14px;background:#210f17;border-right:1px solid #52303c;transition:width .32s ease;overflow:hidden}
+.po-profile-hub.collapsed{width:75px}
+.po-hub-top,.po-hub-bottom{display:flex;flex-direction:column;gap:8px}
+.po-profile-hub button,.po-profile-hub a{font:inherit;border:0;background:none;color:#d7bfc9;display:flex;align-items:center;gap:14px;text-decoration:none;white-space:nowrap;padding:11px 9px;border-radius:12px;cursor:pointer;text-align:left;min-height:47px}
+.po-profile-hub button:hover,.po-profile-hub a:hover,.po-profile-hub .active{color:#fff;background:#4b2231}
+.po-hub-icon{flex:0 0 30px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:400}
+.po-hub-icon svg{width:27px;height:27px}
+.po-hub-label{font-size:15px;opacity:1;transition:opacity .2s ease}
+.po-profile-hub.collapsed .po-hub-label{opacity:0;pointer-events:none}
+.po-hub-toggle{margin-top:20px!important}
+.po-hub-chevron{transition:transform .3s ease}
+.po-profile-hub.collapsed .po-hub-chevron{transform:rotate(180deg)}
+.po-profile-main{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;padding:28px clamp(20px,5vw,75px) 26px;gap:22px}
+.po-profile-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex:0 0 auto}
+.po-profile-eyebrow{font-size:12px;letter-spacing:.16em;color:#d7a8b7;min-height:17px}
+.po-profile-top h1{font-size:clamp(22px,2.7vw,37px);font-weight:500;letter-spacing:.04em;margin:3px 0}
+.po-profile-progress{min-width:160px;text-align:right;font-size:13px;color:#d7bfc9}
+.po-progress-track{height:4px;background:#6b4351;border-radius:4px;margin-top:8px;overflow:hidden}
+.po-progress-track i{height:100%;display:block;background:#dfb6c2;transition:width .25s ease}
+.po-profile-intro,.po-profile-chat,.po-profile-finish{flex:1;min-height:0;border:1px solid #63414d;border-radius:24px;background:#311722}
+.po-profile-intro{display:grid;grid-template-columns:1.15fr 1fr;gap:30px;align-items:center;padding:clamp(25px,4vw,60px);overflow:hidden}
+.po-intro-text h2{font-size:clamp(26px,3.1vw,43px);font-weight:400;line-height:1.2;margin:18px 0}
+.po-intro-text em{font-style:normal;color:#f4c4d1}
+.po-intro-text p,.po-intro-notes p{color:#ddc8cf;line-height:1.55}
+.po-intro-text small{display:block;margin-top:15px;color:#d4aebc}
+.po-start{background:#b96c87;color:white;border:0;border-radius:40px;padding:14px 23px;font-size:15px;cursor:pointer;margin-top:20px;transition:transform .2s ease}
+.po-start:hover{transform:translateY(-3px)}
+.po-intro-notes{display:flex;flex-direction:column;gap:25px}
+.po-intro-notes>div{display:flex;gap:18px;align-items:start}
+.po-intro-notes>div>span{display:grid;place-items:center;border:1px solid #a77485;border-radius:50%;width:43px;height:43px;flex:0 0 43px;font-size:25px}
+.po-intro-notes strong{font-size:17px;font-weight:500}
+.po-intro-notes p{margin:6px 0 0;font-size:14px}
+.po-profile-chat{display:flex;flex-direction:column;overflow:hidden;padding:16px 22px 12px}
+.po-chat-messages{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#845467 transparent;mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 14px),transparent 100%)}
+.po-exchange{display:flex;flex-direction:column;gap:14px;margin:16px 0 22px}
+.po-bot-row,.po-user-row{display:flex;align-items:flex-end;gap:12px}
+.po-bot-avatar{width:44px;height:44px;border:1px solid #a87586;border-radius:50%;display:grid;place-items:center;flex:0 0 44px;background:#28121b}
+.po-bot-avatar img{width:32px;height:32px;object-fit:contain}
+.po-bot-bubble,.po-user-bubble{max-width:min(78%,660px);padding:14px 19px;border-radius:19px;font-size:15px;line-height:1.55}
+.po-bot-bubble{background:#4b2836;color:#fff0f5;border-bottom-left-radius:4px}
+.po-user-row{justify-content:flex-end}
+.po-user-bubble{background:#b97791;color:#fff;border-bottom-right-radius:4px}
+.po-answer-input{height:152px;flex:0 0 152px;display:flex;flex-direction:column;min-height:0;gap:9px;padding:10px 2px;overflow-y:auto;scrollbar-width:thin}
+.po-input-row{display:flex;align-items:center;gap:12px;height:52px;flex:0 0 52px}
+.po-input-row input,.po-input-row textarea,.po-other-input{font:inherit;font-size:15px;color:#fff;background:#4a2835;border:1px solid #906274;border-radius:14px;padding:12px 16px;outline:0}
+.po-input-row input,.po-input-row textarea{height:50px;flex:1;min-width:0;resize:none;overflow:hidden}
+.po-input-row input:focus,.po-input-row textarea:focus{border-color:#f2b5ca}
+.po-send{height:50px;width:50px;flex:0 0 50px;border:1px solid #a8798a;background:#d09aaf;color:#311722;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.po-send svg{width:24px;height:24px}
+.po-answer-options{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start}
+.po-answer-option{font:inherit;font-size:13px;border:1px solid #875568;border-radius:12px;background:#4a2734;color:#f8e8ef;padding:9px 13px;cursor:pointer}
+.po-answer-option:hover,.po-answer-option.selected{background:#a15e79;border-color:#dba6b9}
+.po-answer-confirm{align-self:flex-end;background:#b96c87;color:white;border:0;border-radius:18px;padding:8px 18px;cursor:pointer}
+.po-answer-confirm:disabled{opacity:.4;cursor:not-allowed}
+.po-answer-error{font-size:12px;color:#ffd4d4}
+.po-profile-chat-footer{border-top:1px solid #65404f;min-height:54px;display:flex;align-items:center;gap:20px;color:#c8aab6;font-size:13px}
+.po-back{border:0;background:none;color:#f4d8e1;font-size:17px;display:flex;align-items:center;gap:10px;cursor:pointer;flex:0 0 auto}
+.po-back svg{height:25px;width:25px}
+.po-back:disabled{visibility:hidden}
+.po-profile-finish{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:35px}
+.po-profile-finish p{max-width:600px;line-height:1.6}
+.po-finish-mark{font-size:60px;color:#e7b4c5}
+.po-faq-page{padding:40px clamp(20px,6vw,90px);min-height:75vh;background:#28121b;color:#fff}
+[data-theme="light"] .po-profile-page{background:#f4e8eb;color:#421e2c}
+[data-theme="light"] .po-profile-hub{background:#e9d8de;border-color:#d6b5c0}
+[data-theme="light"] .po-profile-hub button,[data-theme="light"] .po-profile-hub a{color:#5b2a3c}
+[data-theme="light"] .po-profile-hub .active{color:#fff}
+[data-theme="light"] .po-profile-intro,[data-theme="light"] .po-profile-chat,[data-theme="light"] .po-profile-finish{background:#311722;color:#fff}
+@media(max-width:800px){.po-profile-hub{width:75px;padding:15px 8px}.po-hub-label{display:none}.po-profile-main{padding:15px;gap:12px}.po-profile-intro{grid-template-columns:1fr;gap:16px;overflow-y:auto;padding:24px}.po-intro-notes{gap:12px}.po-profile-chat{padding:10px}.po-profile-chat-footer{font-size:11px}.po-profile-progress{min-width:95px}.po-profile-top h1{font-size:23px}.po-answer-input{height:152px;flex-basis:152px}}
+@media(max-height:650px){.po-profile-main{padding-top:12px;padding-bottom:12px;gap:10px}.po-profile-intro{overflow-y:auto}}
+
+/* Etapa 1: introdução fiel à referência 5174 — apenas English Profile. */
+.po-profile-page .po-profile-main{padding:34px clamp(24px,5vw,76px) 34px;gap:22px}
+.po-profile-page .po-profile-top h1{font-weight:750;font-size:clamp(22px,1.7vw,28px);letter-spacing:-.035em;margin:0}
+.po-profile-page .po-profile-top .po-profile-eyebrow:empty{display:none}
+.po-profile-page .po-profile-intro{display:grid;grid-template-columns:minmax(0,2.16fr) minmax(290px,1fr);gap:0;align-items:stretch;padding:0;overflow:hidden;border-radius:22px;background:#301622;border:1px solid #633747}
+.po-profile-page .po-intro-text{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:0;padding:clamp(35px,5.2vw,96px);background:linear-gradient(118deg,#942343 0%,#821d3a 48%,#62162d 100%);color:#fff}
+.po-profile-page .po-intro-text .po-profile-eyebrow{font-size:11px;letter-spacing:.24em;font-weight:700;color:#f8c6d7}
+.po-profile-page .po-intro-text h2{font-family:inherit;font-weight:400;font-size:clamp(34px,3.55vw,69px);line-height:1.12;letter-spacing:-.038em;max-width:760px;margin:24px 0 28px;color:#fff}
+.po-profile-page .po-intro-text p{max-width:650px;font-size:clamp(13px,.9vw,16px);line-height:1.6;color:#fff;margin:0 0 22px}
+.po-profile-page .po-start{display:inline-flex;align-items:center;justify-content:center;gap:16px;width:auto;height:auto;min-height:43px;margin:0;padding:11px 17px;border:0;border-radius:11px;background:#f2b6c9;color:#30121f;font-weight:650;font-size:13px;line-height:1.2;white-space:nowrap;box-shadow:none}
+.po-profile-page .po-start svg{width:16px;height:16px;flex:none}
+.po-profile-page .po-intro-text small{font-size:11px;margin-top:13px;color:#f6d3df}
+.po-profile-page .po-intro-notes{display:flex;flex-direction:column;justify-content:center;gap:0;min-width:0;padding:clamp(24px,3vw,55px);background:#301622}
+.po-profile-page .po-intro-note{display:flex;align-items:flex-start;gap:13px;padding:24px 0;border-bottom:1px solid rgba(255,225,236,.15)}
+.po-profile-page .po-intro-note:last-child{border-bottom:0}
+.po-profile-page .po-note-icon{width:33px;height:33px;flex:0 0 33px;display:grid;place-items:center;border:0;border-radius:10px;background:#5c2a3c;color:#ffe0e9;font-size:19px;font-weight:400}
+.po-profile-page .po-note-icon svg{width:21px;height:21px}
+.po-profile-page .po-intro-note strong{display:block;font-size:13px;line-height:1.4;font-weight:750;color:#fff}
+.po-profile-page .po-intro-note p{margin:5px 0 0;color:#e8c4d0;font-size:12px;line-height:1.55}
+@media(max-width:950px){.po-profile-page .po-profile-intro{grid-template-columns:1fr;overflow-y:auto}.po-profile-page .po-intro-text{padding:34px}.po-profile-page .po-intro-notes{padding:18px 34px}.po-profile-page .po-intro-note{padding:12px 0}.po-profile-page .po-intro-text h2{font-size:clamp(30px,5vw,48px)}}
+@media(max-height:650px){.po-profile-page .po-profile-intro{overflow-y:auto}}
+
+/* Refinamento do chat: mesma estrutura de histórico, respostas e rodapé da 5174 */
+.po-profile-chat{padding:0;display:flex;flex-direction:column;min-height:0}
+.po-chat-messages{padding:20px 34px 12px;scroll-behavior:smooth;overflow-y:auto;flex:1;min-height:0;mask-image:linear-gradient(to bottom,transparent,#000 28px,#000 calc(100% - 26px),transparent)}
+.po-exchange{margin:13px 0 18px;gap:12px}
+.po-bot-row,.po-user-row{align-items:center;gap:10px}
+.po-bot-avatar{width:34px;height:34px;flex-basis:34px}
+.po-bot-avatar img{width:23px;height:23px}
+.po-bot-bubble,.po-user-bubble{padding:11px 15px;border-radius:15px;font-size:13px;line-height:1.4}
+.po-bot-bubble{background:#381b27;border:1px solid #66364a;border-bottom-left-radius:15px}
+.po-user-bubble{background:#8d1d42;border-bottom-right-radius:15px}
+.po-profile-chat>.po-answer-waiting{height:152px;flex:0 0 152px;min-height:0;overflow:hidden;position:relative}
+.po-profile-chat>.po-answer-waiting .po-answer-input{pointer-events:none;opacity:.28}
+.po-profile-chat>.po-answer-waiting:after{content:none;position:absolute;inset:0;display:grid;place-items:center;color:#dcb4c4;font-size:13px}
+.po-profile-chat>.po-answer-input,.po-profile-chat>.po-answer-waiting .po-answer-input{height:152px;flex:0 0 152px}
+.po-profile-chat>.po-answer-input{border-top:1px solid #5d3040;padding:18px 32px}
+.po-profile-chat>.po-answer-waiting{border-top:1px solid #5d3040}
+.po-profile-chat>.po-answer-waiting .po-answer-input{padding:18px 32px}
+.po-answer-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.po-answer-option{min-height:40px;text-align:left;background:transparent;border:1px solid #653448;border-radius:12px;padding:9px 13px;font-size:13px}
+.po-answer-option:hover,.po-answer-option.selected{background:#5e293e;border-color:#aa6580}
+.po-profile-chat-footer{flex:0 0 80px;padding:0 32px;background:#321722;justify-content:space-between;border-top:1px solid #5d3040;font-size:14px}
+.po-back{font-size:15px;font-weight:600}
+.po-back svg{width:22px;height:22px}
+.po-typing-row{margin:10px 0 14px}
+.po-typing-bubble{display:flex;align-items:center;gap:5px;min-height:37px}
+.po-typing-bubble i{display:block;width:7px;height:7px;border-radius:50%;background:#dca2b6;animation:po-typing-bounce 1s ease-in-out infinite}
+.po-typing-bubble i:nth-child(2){animation-delay:.15s}
+.po-typing-bubble i:nth-child(3){animation-delay:.3s}
+@keyframes po-typing-bounce{0%,65%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-6px);opacity:1}}
+.po-intro-note .po-note-icon{width:34px!important;height:34px!important;flex:0 0 34px!important}
+.po-intro-note .po-note-icon svg{width:20px!important;height:20px!important}
+@media(max-width:800px){.po-chat-messages{padding:12px 14px}.po-profile-chat>.po-answer-input,.po-profile-chat>.po-answer-waiting .po-answer-input{padding:12px 14px}.po-profile-chat-footer{padding:0 14px;font-size:12px}.po-answer-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Etapa pontual: resposta sempre fixa dentro do chat, sem scroll da pagina. */
+.po-profile-page, .po-profile-layout, .po-profile-main { min-height:0; overflow:hidden; }
+.po-profile-page .po-profile-chat { display:flex; flex-direction:column; flex:1 1 auto; min-height:0; overflow:hidden; }
+.po-profile-page .po-profile-chat > .po-chat-messages { flex:1 1 0; min-height:0; overflow-y:auto; overflow-x:hidden; }
+.po-profile-page .po-profile-chat > .po-answer-input,
+.po-profile-page .po-profile-chat > .po-answer-waiting { flex:0 0 152px; height:152px; min-height:152px; max-height:152px; overflow-y:auto; overflow-x:hidden; border-top:1px solid #5d3040; }
+.po-profile-page .po-profile-chat > .po-answer-waiting { overflow:hidden; }
+.po-profile-page .po-profile-chat > .po-answer-waiting .po-answer-input { height:152px; min-height:152px; }
+.po-profile-page .po-profile-chat > .po-answer-waiting::after { content:none!important; display:none!important; }
+.po-profile-page .po-profile-chat > .po-profile-chat-footer { flex:0 0 80px; min-height:80px; }
+.po-profile-page .po-profile-chat, .po-profile-page .po-profile-chat button,
+.po-profile-page .po-profile-chat input, .po-profile-page .po-profile-chat textarea { font-family:Montserrat,Arial,sans-serif; }
+.po-profile-page .po-bot-avatar { width:32px; height:32px; flex:0 0 32px; }
+.po-profile-page .po-bot-avatar img { width:23px; height:23px; object-fit:contain; }
+@media(max-height:650px) { .po-profile-page .po-profile-chat > .po-profile-chat-footer { flex-basis:60px; min-height:60px; } }
+
+/* Correção focal: chat ocupa toda a área, sem scroll externo e sem encolher. */
+.po-profile-page .po-profile-main{padding-top:22px;padding-bottom:20px;gap:18px;min-height:0;min-width:0}
+.po-profile-page .po-profile-chat{flex:1 1 0;min-height:0;max-height:none;width:100%;display:flex;flex-direction:column;overflow:hidden;border-radius:24px;background:linear-gradient(160deg,#241019 0%,#321722 100%)}
+.po-profile-page .po-profile-chat>.po-chat-messages{flex:1 1 0;min-height:0;overflow-y:auto;overflow-x:hidden;padding:24px 42px 16px}
+.po-profile-page .po-profile-chat>.po-answer-slot{flex:0 0 152px;height:152px;min-height:152px;max-height:152px;min-width:0;box-sizing:border-box;border-top:1px solid #5d3040;overflow-y:auto;overflow-x:hidden;padding:0 28px;scrollbar-width:thin}
+.po-profile-page .po-profile-chat>.po-answer-slot>.po-answer-input{box-sizing:border-box;min-height:152px;height:auto;max-height:none;width:100%;padding:14px 0;overflow:visible;display:flex;flex-direction:column;gap:9px}
+.po-profile-page .po-profile-chat>.po-answer-slot.po-answer-waiting>.po-answer-input{opacity:.3;pointer-events:none}
+.po-profile-page .po-profile-chat>.po-answer-slot .po-answer-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-width:0}
+.po-profile-page .po-profile-chat>.po-answer-slot .po-answer-option{min-width:0;max-width:100%;overflow-wrap:anywhere;box-sizing:border-box}
+.po-profile-page .po-profile-chat>.po-answer-slot .po-input-row{width:100%;min-width:0;display:flex;box-sizing:border-box}
+.po-profile-page .po-profile-chat>.po-answer-slot .po-input-row input,.po-profile-page .po-profile-chat>.po-answer-slot .po-input-row textarea{min-width:0;flex:1 1 0;max-width:100%;box-sizing:border-box}
+.po-profile-page .po-profile-chat>.po-answer-slot .po-send{flex:0 0 44px;width:44px;height:44px;box-sizing:border-box}
+.po-profile-page .po-profile-chat>.po-profile-chat-footer{flex:0 0 80px;min-height:80px;max-height:80px;padding:0 32px;box-sizing:border-box}
+.po-profile-page .po-profile-top{min-height:52px}
+.po-profile-page .po-profile-hub .po-hub-stages{padding:13px 8px 0;min-height:0;overflow-y:auto;scrollbar-width:thin}
+.po-profile-page .po-profile-hub .po-hub-stages-label{display:block;font-size:10px;font-weight:750;letter-spacing:.2em;color:#d3a0b3;margin:0 0 12px 5px}
+.po-profile-page .po-profile-hub .po-hub-stage-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.po-profile-page .po-profile-hub .po-hub-stage{min-height:33px;height:33px;width:100%;display:grid;place-items:center;padding:0;border:1px solid #68384a;border-radius:9px;background:#351824;color:#f3d5df;font-size:11px;font-weight:750;line-height:1}
+.po-profile-page .po-profile-hub .po-hub-stage:hover{background:#5b293d;border-color:#ac647d}
+.po-profile-page .po-profile-hub .po-hub-stage.answered{background:#542738}
+.po-profile-page .po-profile-hub .po-hub-stage.current{background:#8c2041;color:#fff;border-color:#8c2041}
+@media(max-width:800px){.po-profile-page .po-profile-main{padding:12px;gap:10px}.po-profile-page .po-profile-chat>.po-chat-messages{padding:12px 14px}.po-profile-page .po-profile-chat>.po-answer-slot{padding:0 12px}.po-profile-page .po-profile-chat>.po-profile-chat-footer{padding:0 12px}.po-profile-page .po-profile-hub .po-hub-stage-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Correção estrutural: o CSS institucional define `main {margin:auto;max-width:1320px}`
+   e `footer {margin:auto;max-width:1320px}`. Essas regras globais estavam
+   encolhendo/centralizando o chat e escondendo a conversa. */
+.po-profile-page .po-profile-layout > main.po-profile-main {
+  margin:0; max-width:none; width:auto; box-sizing:border-box;
+  flex:1 1 0; align-self:stretch; min-height:0; min-width:0;
+  padding:20px clamp(20px,5vw,76px) 22px;
+  display:flex; flex-direction:column; justify-content:flex-start;
+}
+.po-profile-page .po-profile-main > .po-profile-chat {
+  flex:1 1 0; min-height:0; height:auto; width:100%;
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.po-profile-page .po-profile-chat > .po-chat-messages {
+  flex:1 1 0; min-height:0; overflow-y:auto;
+}
+.po-profile-page .po-profile-chat > .po-answer-slot {
+  flex:0 0 152px; height:152px; min-height:152px;
+  overflow-y:auto; overflow-x:hidden;
+}
+.po-profile-page .po-profile-chat > footer.po-profile-chat-footer {
+  margin:0; max-width:none; width:100%; min-height:80px;
+  flex:0 0 80px; box-sizing:border-box;
+}
+.po-profile-page .po-profile-hub .po-hub-stage:disabled {
+  opacity:.38; cursor:not-allowed; background:transparent; border-color:#583044;
+}
+.po-profile-page .po-profile-hub .po-hub-stage:disabled:hover {
+  background:transparent; border-color:#583044;
+}
+
+/* Refinamento: barras discretas Bordeaux, sem scroll cinza nativo. */
+.po-profile-page .po-chat-messages,
+.po-profile-page .po-profile-chat > .po-answer-slot,
+.po-profile-page .po-profile-hub .po-hub-stages {
+  scrollbar-width:thin;
+  scrollbar-color:#98536e #321a26;
+}
+.po-profile-page .po-chat-messages::-webkit-scrollbar,
+.po-profile-page .po-profile-chat > .po-answer-slot::-webkit-scrollbar,
+.po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar { width:6px; height:6px; }
+.po-profile-page .po-chat-messages::-webkit-scrollbar-track,
+.po-profile-page .po-profile-chat > .po-answer-slot::-webkit-scrollbar-track,
+.po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar-track { background:#321a26; border-radius:99px; }
+.po-profile-page .po-chat-messages::-webkit-scrollbar-thumb,
+.po-profile-page .po-profile-chat > .po-answer-slot::-webkit-scrollbar-thumb,
+.po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar-thumb { background:#98536e; border:1px solid #321a26; border-radius:99px; }
+.po-profile-page .po-chat-messages::-webkit-scrollbar-thumb:hover,
+.po-profile-page .po-profile-chat > .po-answer-slot::-webkit-scrollbar-thumb:hover,
+.po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar-thumb:hover { background:#b7738c; }
+/* Barra de progresso na mesma família cromática do scroll. */
+.po-profile-page .po-progress-track { background:#462533; border-radius:99px; }
+.po-profile-page .po-progress-track > i { background:#98536e; border-radius:99px; }
+/* Logos laterais em SVG, proporcionais aos demais ícones do Hub. */
+.po-profile-page .po-hub-bottom .po-hub-icon svg { width:23px; height:23px; }
+/* Etapas futuras visualmente bloqueadas, sem hover ativo. */
+.po-profile-page .po-hub-stage:disabled { opacity:.3; cursor:not-allowed; pointer-events:none; }
+
+/* Ajustes pontuais aprovados: mais 15px na área fixa, microtexto e logo rosa do shift. */
+.po-profile-page .po-profile-chat > .po-answer-slot {
+  flex: 0 0 167px;
+  height: 167px;
+  min-height: 167px;
+  max-height: 167px;
+}
+.po-profile-page .po-profile-chat > .po-answer-slot > .po-answer-input {
+  min-height: 167px;
+}
+.po-profile-page .po-answer-hint {
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+/* Mesma família rosada do controle de tema, preservando a logo real. */
+.po-profile-page .po-bot-avatar img {
+  filter: brightness(0) saturate(100%) invert(78%) sepia(16%) saturate(734%) hue-rotate(291deg) brightness(101%) contrast(91%);
+}
+[data-theme="light"] .po-profile-page .po-bot-avatar img {
+  filter: brightness(0) saturate(100%) invert(31%) sepia(24%) saturate(1203%) hue-rotate(291deg) brightness(90%) contrast(94%);
+}
+
+/* Acabamento do chat: fumaca Bordeaux sem interferir nos controles fixos. */
+.po-profile-page .po-profile-chat {
+  position:relative;
+  background:linear-gradient(162deg,#200e16 0%,#29121d 46%,#381b29 100%);
+  box-shadow:inset 0 1px 0 rgba(245,179,202,.10),0 18px 46px rgba(14,3,9,.14);
+}
+.po-profile-page .po-profile-chat > .po-chat-messages {
+  position:relative;
+  background:radial-gradient(ellipse at 55% 95%,rgba(123,48,78,.16),transparent 68%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 30px,#000 calc(100% - 32px),transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 30px,#000 calc(100% - 32px),transparent 100%);
+}
+.po-profile-page .po-profile-chat > .po-answer-slot {
+  background:linear-gradient(180deg,rgba(48,21,34,.97),#321925 65%,#341b28);
+  box-shadow:0 -13px 26px rgba(23,8,15,.22);
+}
+.po-profile-page .po-profile-chat > footer.po-profile-chat-footer {
+  background:linear-gradient(180deg,#321925,#301622);
+}
+/* Logo maior e com o tom rosado do controle de tema. */
+.po-profile-page .po-bot-avatar {width:40px;height:40px;flex:0 0 40px;border-color:#99677c;background:radial-gradient(circle at 50% 40%,#432433,#27131d 75%)}
+.po-profile-page .po-bot-avatar img {width:30px;height:30px;max-width:30px;max-height:30px;object-fit:contain;opacity:1}
+/* Botao do aviao: fundo igual ao balao do bot, desenho somente contorno. */
+.po-profile-page .po-profile-chat .po-send {
+  background:#4b2836;color:#f4c4d5;border:1px solid #875569;
+  border-radius:12px;box-shadow:none;transition:background .18s,border-color .18s;
+}
+.po-profile-page .po-profile-chat .po-send svg {width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7}
+.po-profile-page .po-profile-chat .po-send:hover {background:#613246;border-color:#c2879d}
+@media (max-width:800px){.po-profile-page .po-bot-avatar{width:34px;height:34px;flex-basis:34px}.po-profile-page .po-bot-avatar img{width:26px;height:26px}}
+
+/* 5174 como referencia: topo escuro com halo discreto, sem lavar o Bordeaux. */
+.po-profile-page .po-profile-chat {
+  isolation:isolate;
+  background:linear-gradient(180deg,#1b0c13 0%,#25111b 37%,#321824 100%);
+  box-shadow:inset 0 1px 0 rgba(240,170,193,.10),0 16px 42px rgba(13,3,8,.15);
+}
+/* O brilho fica no contorno superior; o fade pertence ao historico rolavel. */
+.po-profile-page .po-profile-chat::before {
+  content:"";
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+  top:0;left:0;right:0;
+  height:64px;
+  border-radius:23px 23px 0 0;
+  background:linear-gradient(to bottom,
+    rgba(106,48,72,.22) 0%,
+    rgba(49,20,33,.18) 13%,
+    rgba(26,10,17,.12) 45%,
+    transparent 100%);
+}
+.po-profile-page .po-profile-chat > .po-chat-messages {
+  background:radial-gradient(ellipse at 55% 96%,rgba(105,42,68,.10),transparent 72%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 25px,#000 calc(100% - 28px),transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 25px,#000 calc(100% - 28px),transparent 100%);
+}
+
+
+/* Plus One | Light Mode Marsala — somente English Profile.
+   Dark Mode aprovado permanece intocado; a troca usa data-theme do Header. */
+[data-theme="light"] .po-profile-page {
+  background:linear-gradient(145deg,#f8f1f2 0%,#f1e3e7 100%);
+  color:#4c2031;
+}
+[data-theme="light"] .po-profile-page .po-profile-hub {
+  background:linear-gradient(180deg,#f2e5e9,#e9d5dd);
+  border-right-color:#d9b8c5;
+}
+[data-theme="light"] .po-profile-page .po-profile-hub button,
+[data-theme="light"] .po-profile-page .po-profile-hub a {color:#67354a;}
+[data-theme="light"] .po-profile-page .po-profile-hub button:hover:not(:disabled),
+[data-theme="light"] .po-profile-page .po-profile-hub a:hover {
+  background:#e1c2ce;color:#4e1b31;
+}
+[data-theme="light"] .po-profile-page .po-profile-hub button.active {
+  background:#77364f;color:#fff;
+}
+[data-theme="light"] .po-profile-page .po-hub-stages-label,
+[data-theme="light"] .po-profile-page .po-profile-eyebrow {color:#92516b;}
+[data-theme="light"] .po-profile-page .po-hub-stage {
+  background:#f8eef1;border-color:#cf9caf;color:#683249;
+}
+[data-theme="light"] .po-profile-page .po-hub-stage.answered {
+  background:#e9c9d5;border-color:#bf849a;color:#5b263c;
+}
+[data-theme="light"] .po-profile-page .po-hub-stage.current {
+  background:#8c294e;border-color:#8c294e;color:#fff;
+}
+[data-theme="light"] .po-profile-page .po-hub-stage:disabled,
+[data-theme="light"] .po-profile-page .po-hub-stage:disabled:hover {
+  background:rgba(117,59,80,.045);border-color:#dec6cf;
+  color:#ac8b98;opacity:.55;
+}
+[data-theme="light"] .po-profile-page .po-profile-progress {color:#6b3449;}
+[data-theme="light"] .po-profile-page .po-progress-track {
+  background:#dec0cb;box-shadow:inset 0 1px 2px rgba(89,35,55,.12);
+}
+[data-theme="light"] .po-profile-page .po-progress-track > i {background:#9a4868;}
+/* O chat mantém sua atmosfera escura e o fade aprovado, mesmo no Light Mode. */
+[data-theme="light"] .po-profile-page .po-profile-chat {
+  color:#fff0f4;
+  background:linear-gradient(180deg,#29121c 0%,#351a28 45%,#442133 100%);
+  border-color:#91596f;
+  box-shadow:inset 0 1px 0 rgba(255,212,228,.13),0 16px 40px rgba(96,41,62,.13);
+}
+[data-theme="light"] .po-profile-page .po-profile-chat::before {
+  background:linear-gradient(to bottom,rgba(159,83,112,.24),rgba(51,20,34,.14) 48%,transparent);
+}
+[data-theme="light"] .po-profile-page .po-profile-chat > .po-chat-messages {
+  background:radial-gradient(ellipse at 55% 96%,rgba(149,72,101,.13),transparent 72%);
+}
+[data-theme="light"] .po-profile-page .po-profile-chat > .po-answer-slot {
+  background:linear-gradient(180deg,#402132,#3b1d2c 70%,#381b2a);
+  border-top-color:#744357;
+}
+[data-theme="light"] .po-profile-page .po-profile-chat > footer.po-profile-chat-footer {
+  background:linear-gradient(180deg,#3a1d2c,#351926);
+  border-top-color:#744357;
+}
+[data-theme="light"] .po-profile-page .po-bot-bubble {
+  background:#4d2939;border-color:#845066;color:#fff0f4;
+}
+[data-theme="light"] .po-profile-page .po-user-bubble {background:#a54b70;color:#fff;}
+[data-theme="light"] .po-profile-page .po-bot-avatar {
+  background:radial-gradient(circle at 50% 40%,#5a3042,#321824 75%);
+  border-color:#bc8499;
+}
+[data-theme="light"] .po-profile-page .po-bot-avatar img {
+  filter:brightness(0) saturate(100%) invert(83%) sepia(15%) saturate(544%) hue-rotate(288deg) brightness(104%) contrast(95%);
+}
+[data-theme="light"] .po-profile-page .po-answer-option {
+  color:#ffeaf1;border-color:#8d556c;background:rgba(255,228,239,.035);
+}
+[data-theme="light"] .po-profile-page .po-answer-option:hover,
+[data-theme="light"] .po-profile-page .po-answer-option.selected {
+  background:#704057;border-color:#d49db3;
+}
+[data-theme="light"] .po-profile-page .po-input-row input,
+[data-theme="light"] .po-profile-page .po-input-row textarea,
+[data-theme="light"] .po-profile-page .po-other-input {
+  background:#49283a;color:#fff;border-color:#99657b;
+}
+[data-theme="light"] .po-profile-page .po-profile-chat .po-send {
+  background:#4d2939;color:#f9cfde;border-color:#a36d82;
+}
+[data-theme="light"] .po-profile-page .po-profile-chat .po-send:hover {
+  background:#63364a;border-color:#dca9bb;
+}
+[data-theme="light"] .po-profile-page .po-profile-chat .po-back {color:#f7d4e0;}
+[data-theme="light"] .po-profile-page .po-profile-chat-footer {color:#dcb4c5;}
+[data-theme="light"] .po-profile-page .po-chat-messages,
+[data-theme="light"] .po-profile-page .po-profile-chat > .po-answer-slot {
+  scrollbar-color:#bd8199 #3d2030;
+}
+[data-theme="light"] .po-profile-page .po-chat-messages::-webkit-scrollbar-track,
+[data-theme="light"] .po-profile-page .po-profile-chat > .po-answer-slot::-webkit-scrollbar-track {
+  background:#3d2030;
+}
+[data-theme="light"] .po-profile-page .po-chat-messages::-webkit-scrollbar-thumb,
+[data-theme="light"] .po-profile-page .po-profile-chat > .po-answer-slot::-webkit-scrollbar-thumb {
+  background:#bd8199;border-color:#3d2030;
+}
+[data-theme="light"] .po-profile-page .po-hub-stages {scrollbar-color:#ad7087 #e9d5dd;}
+[data-theme="light"] .po-profile-page .po-hub-stages::-webkit-scrollbar-track {background:#e9d5dd;}
+[data-theme="light"] .po-profile-page .po-hub-stages::-webkit-scrollbar-thumb {background:#ad7087;border-color:#e9d5dd;}
+/* Introdução: preservar o cartão Bordeaux, clarear apenas a coluna de apoio. */
+[data-theme="light"] .po-profile-page .po-profile-intro {
+  border-color:#b9879b;background:#f0dce3;
+  box-shadow:0 16px 38px rgba(100,43,65,.11);
+}
+[data-theme="light"] .po-profile-page .po-intro-text {
+  background:linear-gradient(118deg,#a52d52 0%,#8a2545 50%,#6c1e39 100%);
+}
+[data-theme="light"] .po-profile-page .po-intro-notes {background:#f0dce3;}
+[data-theme="light"] .po-profile-page .po-intro-note {border-bottom-color:#d7b3c0;}
+[data-theme="light"] .po-profile-page .po-intro-note strong {color:#532338;}
+[data-theme="light"] .po-profile-page .po-intro-note p {color:#71455a;}
+[data-theme="light"] .po-profile-page .po-note-icon {
+  background:#dcb4c4;color:#682b45;
+}
+[data-theme="light"] .po-profile-page .po-profile-finish {
+  background:#f0dce3;color:#522237;border-color:#c995a8;
+}
+
+/* Introduction final polish: animated entrance + three independent cards */
+.po-profile-page .po-intro-animated .po-profile-eyebrow,
+.po-profile-page .po-intro-animated h2,
+.po-profile-page .po-intro-animated p {
+  animation: po-enter-left .75s cubic-bezier(.2,.7,.2,1) both;
+}
+.po-profile-page .po-intro-animated h2 {animation-delay:.1s}
+.po-profile-page .po-intro-animated p {animation-delay:.22s}
+.po-profile-page .po-intro-animated .po-start {
+  animation:po-enter-up .7s cubic-bezier(.2,.7,.2,1) .4s both;
+}
+.po-profile-page .po-intro-animated small {animation:po-enter-up .7s ease .55s both}
+.po-profile-page .po-notes-animated {
+  gap:clamp(12px,1.45vw,22px);
+}
+.po-profile-page .po-notes-animated .po-intro-note {
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,1.2vw,19px);
+  padding:clamp(17px,1.7vw,26px);
+  border:1px solid rgba(247,188,210,.14);
+  border-radius:16px;
+  background:linear-gradient(125deg,rgba(125,53,78,.3),rgba(69,30,47,.42));
+  box-shadow:0 9px 28px rgba(17,4,10,.1);
+  animation:po-enter-right .7s cubic-bezier(.2,.7,.2,1) both;
+}
+.po-profile-page .po-notes-animated .po-intro-note:nth-child(1){animation-delay:.18s}
+.po-profile-page .po-notes-animated .po-intro-note:nth-child(2){animation-delay:.33s}
+.po-profile-page .po-notes-animated .po-intro-note:nth-child(3){animation-delay:.48s}
+.po-profile-page .po-notes-animated .po-note-icon,
+.po-profile-page .po-notes-animated .po-note-icon.po-note-exclamation {
+  width:30px!important;height:30px!important;flex:0 0 30px!important;
+  border:0!important;border-radius:0!important;background:transparent!important;
+  color:#f3b6cb;font-size:24px;
+}
+.po-profile-page .po-notes-animated .po-note-icon svg{width:25px!important;height:25px!important}
+.po-profile-page .po-notes-animated .po-intro-note strong {font-size:clamp(14px,1vw,16px)}
+.po-profile-page .po-notes-animated .po-intro-note p {font-size:clamp(12px,.86vw,14px)}
+[data-theme="light"] .po-profile-page .po-notes-animated .po-intro-note {
+  background:linear-gradient(125deg,#f9f1f4,#ead3dc);
+  border-color:#dcb9c7;
+  box-shadow:0 8px 22px rgba(90,38,58,.08);
+}
+[data-theme="light"] .po-profile-page .po-notes-animated .po-note-icon {color:#9a4868}
+@keyframes po-enter-left {from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes po-enter-right {from{opacity:0;transform:translateX(36px)}to{opacity:1;transform:translateX(0)}}
+@keyframes po-enter-up {from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:950px){.po-profile-page .po-notes-animated{gap:10px}.po-profile-page .po-notes-animated .po-intro-note{padding:15px}}
+@media(prefers-reduced-motion:reduce){
+ .po-profile-page .po-intro-animated .po-profile-eyebrow,
+ .po-profile-page .po-intro-animated h2,
+ .po-profile-page .po-intro-animated p,
+ .po-profile-page .po-intro-animated .po-start,
+ .po-profile-page .po-intro-animated small,
+ .po-profile-page .po-notes-animated .po-intro-note{animation:none!important}
+}
+
+/* Responsividade compacta: preserva a estrutura sem scroll da página. */
+.po-profile-page, .po-profile-page .po-profile-layout {overflow:hidden}
+.po-profile-page .po-profile-main {min-height:0}
+.po-profile-page .po-profile-intro {min-height:0;overflow:hidden}
+.po-profile-page .po-intro-text, .po-profile-page .po-intro-notes {min-height:0}
+.po-profile-page .po-notes-animated .po-intro-note {min-width:0}
+.po-profile-page .po-notes-animated .po-intro-note section {min-width:0}
+
+/* Laptops, monitores e janelas lado a lado. Não empilhar cards: isso gera scroll. */
+@media (min-width:701px) and (max-width:1350px) {
+  .po-profile-page .po-profile-layout > main.po-profile-main {padding:14px clamp(14px,3vw,36px) 16px;gap:12px}
+  .po-profile-page .po-profile-intro {grid-template-columns:minmax(0,1.65fr) minmax(230px,.95fr);overflow:hidden}
+  .po-profile-page .po-intro-text {padding:clamp(20px,3vw,42px)}
+  .po-profile-page .po-intro-text h2 {font-size:clamp(26px,3.15vw,43px);margin:12px 0 16px;line-height:1.12}
+  .po-profile-page .po-intro-text p {font-size:clamp(11px,1vw,13px);line-height:1.45;margin-bottom:14px}
+  .po-profile-page .po-intro-notes {padding:clamp(12px,2vw,26px);gap:10px}
+  .po-profile-page .po-notes-animated .po-intro-note {padding:clamp(10px,1.3vw,17px);gap:10px;border-radius:13px}
+  .po-profile-page .po-notes-animated .po-intro-note strong {font-size:clamp(11px,1vw,14px)}
+  .po-profile-page .po-notes-animated .po-intro-note p {font-size:clamp(10px,.85vw,12px);line-height:1.4;margin-top:3px}
+  .po-profile-page .po-notes-animated .po-note-icon {width:24px!important;height:24px!important;flex-basis:24px!important;font-size:20px}
+  .po-profile-page .po-notes-animated .po-note-icon svg {width:21px!important;height:21px!important}
+}
+
+/* Telas baixas: reservar altura para o chat e comprimir apenas áreas decorativas. */
+@media (max-height:760px) and (min-width:701px) {
+  .po-profile-page .po-profile-layout > main.po-profile-main {padding-top:10px;padding-bottom:10px;gap:10px}
+  .po-profile-page .po-profile-top h1 {font-size:clamp(19px,1.5vw,25px)}
+  .po-profile-page .po-profile-top .po-profile-eyebrow {font-size:10px;min-height:12px}
+  .po-profile-page .po-intro-text {padding:clamp(18px,3vh,35px) clamp(20px,3vw,44px)}
+  .po-profile-page .po-intro-text h2 {font-size:clamp(26px,3.1vw,44px);margin:10px 0 14px}
+  .po-profile-page .po-intro-text p {margin-bottom:12px;line-height:1.4}
+  .po-profile-page .po-intro-text small {margin-top:8px}
+  .po-profile-page .po-start {min-height:36px;padding:9px 13px}
+  .po-profile-page .po-intro-notes {padding:12px 20px;gap:8px}
+  .po-profile-page .po-notes-animated .po-intro-note {padding:10px 12px;gap:9px}
+  .po-profile-page .po-notes-animated .po-intro-note p {line-height:1.32}
+  .po-profile-page .po-profile-chat > .po-answer-slot {flex-basis:124px;height:124px;min-height:124px;max-height:124px}
+  .po-profile-page .po-profile-chat > .po-answer-slot > .po-answer-input {min-height:124px;padding:10px 0}
+  .po-profile-page .po-profile-chat > footer.po-profile-chat-footer {flex-basis:54px;min-height:54px;max-height:54px}
+  .po-profile-page .po-profile-chat > .po-chat-messages {padding-top:12px;padding-bottom:8px}
+  .po-profile-page .po-hub-stages {min-height:0}
+}
+
+/* Em celulares, uma única coluna é necessária. Mantém o conteúdo acessível
+   sem provocar scroll no documento: o próprio painel da introdução pode rolar. */
+@media (max-width:700px) {
+  .po-profile-page .po-profile-layout > main.po-profile-main {padding:10px;gap:10px}
+  .po-profile-page .po-profile-intro {grid-template-columns:minmax(0,1fr);overflow-y:auto;overscroll-behavior:contain}
+  .po-profile-page .po-intro-text {padding:24px}
+  .po-profile-page .po-intro-text h2 {font-size:clamp(26px,6vw,39px);margin:12px 0 16px}
+  .po-profile-page .po-intro-notes {padding:16px 20px;gap:10px}
+  .po-profile-page .po-notes-animated .po-intro-note {padding:12px}
+  .po-profile-page .po-profile-chat > .po-answer-slot {flex-basis:130px;height:130px;min-height:130px;max-height:130px}
+  .po-profile-page .po-profile-chat > footer.po-profile-chat-footer {flex-basis:56px;min-height:56px;max-height:56px}
+}
+
+/* Ajustes pontuais: confirmação múltipla, alinhamento da Q22 e selo de sucesso */
+.po-profile-page .po-answer-confirm {
+  display:inline-flex;align-items:center;justify-content:center;align-self:flex-end;
+  width:39px;height:39px;min-width:39px;padding:8px;border-radius:12px;
+  background:var(--po-answer-bubble,#9a224b);color:#fff;border:1px solid rgba(255,190,209,.25);
+  transition:transform .16s ease,filter .16s ease;
+}
+.po-profile-page .po-answer-confirm svg {width:23px;height:23px;display:block}
+.po-profile-page .po-answer-confirm:not(:disabled):hover {transform:translateY(-2px);filter:brightness(1.13)}
+.po-profile-page .po-answer-confirm:focus-visible {outline:2px solid #f0b3c9;outline-offset:3px}
+.po-profile-page .po-answer-confirm:disabled {opacity:.4}
+.po-profile-page .po-input-row textarea {line-height:1.45;min-height:39px;padding-top:10px;padding-bottom:9px;resize:none}
+/* Ícone de sucesso: círculo/selo com check geométrico de traços retos. */
+.po-profile-page .po-finish-mark {
+  position:relative;display:flex;align-items:center;justify-content:center;
+  width:86px;height:86px;margin-inline:auto;border:2px solid #d89aaf;
+  border-radius:50%;font-size:0!important;line-height:0;
+  background:radial-gradient(circle at 32% 25%,rgba(233,161,187,.22),rgba(113,32,61,.13) 65%,transparent);
+  box-shadow:0 0 0 7px rgba(174,78,111,.1),inset 0 0 0 5px rgba(223,154,178,.08);
+}
+.po-profile-page .po-finish-mark::before {
+  content:"";display:block;width:31px;height:17px;border-left:5px solid #e9b2c4;
+  border-bottom:5px solid #e9b2c4;transform:translateY(-4px) rotate(-45deg);
+  border-radius:1px;
+}
+
+/* Confirmação de múltipla escolha sempre visível ANTES das opções.
+   O scroll continua apenas dentro da barra fixa de respostas. */
+.po-profile-page .po-answer-confirm-bar {
+  position:sticky;top:-1px;z-index:5;display:flex;justify-content:center;
+  flex:0 0 auto;padding:2px 0 10px;
+  background:linear-gradient(180deg,#321824 0%,#321824 75%,rgba(50,24,36,0) 100%);
+}
+.po-profile-page .po-answer-confirm-bar .po-answer-confirm {
+  align-self:center;width:auto;min-width:118px;height:35px;gap:9px;
+  padding:6px 12px;font:600 12px Montserrat,sans-serif;border-radius:10px;
+}
+.po-profile-page .po-answer-confirm-bar .po-answer-confirm svg {width:18px;height:18px;fill:none;stroke:currentColor}
+[data-theme="light"] .po-profile-page .po-answer-confirm-bar {
+  background:linear-gradient(180deg,#f7eaf0 0%,#f7eaf0 75%,rgba(247,234,240,0) 100%);
+}
+
+/* Refinamento Light Mode + Hub: sem mudanças de lógica ou layout do chat */
+[data-theme="light"] .po-profile-page .po-intro-text .po-profile-eyebrow {
+  color:#fff;
+}
+/* Remove a placa clara do topo das alternativas, preservando o botão central. */
+[data-theme="light"] .po-profile-page .po-answer-confirm-bar {
+  background:transparent;
+}
+/* A coluna superior do Hub pode encolher; só as etapas recebem rolagem. */
+.po-profile-page .po-profile-hub {
+  min-height:0;
+}
+.po-profile-page .po-profile-hub .po-hub-top {
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+}
+.po-profile-page .po-profile-hub .po-hub-stages {
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+}
+.po-profile-page .po-profile-hub .po-hub-bottom {
+  flex:0 0 auto;
+  min-height:0;
+}
+
+/* Refinamento pontual: campos de texto centrados na área fixa, sem scroll. */
+.po-profile-page .po-profile-chat > .po-answer-slot:has(.po-input-row) {
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.po-profile-page .po-profile-chat > .po-answer-slot:has(.po-input-row) > .po-answer-input {
+  min-height:0;height:auto;width:100%;padding:0;display:flex;justify-content:center;
+}
+.po-profile-page .po-profile-chat > .po-answer-slot .po-input-row {
+  width:100%;max-width:100%;align-items:center;margin:0 auto;
+}
+.po-profile-page .po-profile-chat > .po-answer-slot .po-input-row input {
+  min-height:44px;line-height:normal;overflow:hidden;
+}
+/* Etapas do Hub: rolagem com identidade Marsala, independente do tema. */
+.po-profile-page .po-profile-hub .po-hub-stages {
+  overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;
+  scrollbar-color:#98536e #321a26;
+}
+.po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar {width:6px}
+.po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar-track {background:#321a26;border-radius:99px}
+.po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar-thumb {background:#98536e;border-radius:99px}
+[data-theme="light"] .po-profile-page .po-profile-hub .po-hub-stages {scrollbar-color:#ad7087 #e9d5dd}
+[data-theme="light"] .po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar-track {background:#e9d5dd}
+[data-theme="light"] .po-profile-page .po-profile-hub .po-hub-stages::-webkit-scrollbar-thumb {background:#ad7087}
+/* Sem placa clara atrás do botão Responder no Light Mode. */
+[data-theme="light"] .po-profile-page .po-answer-confirm-bar,
+[data-theme="light"] .po-profile-page .po-answer-confirm-bar::before,
+[data-theme="light"] .po-profile-page .po-answer-confirm-bar::after {background:transparent!important;box-shadow:none!important}
+
+/* Campos digitados: alinhamento vertical central e preenchimento horizontal integral. */
+.po-profile-page .po-profile-chat > .po-answer-slot:has(.po-input-row) {justify-content:stretch;}
+.po-profile-page .po-profile-chat > .po-answer-slot:has(.po-input-row) > .po-answer-input {align-items:stretch;}
+.po-profile-page .po-profile-chat > .po-answer-slot .po-input-row {justify-content:flex-start;}
+/* O campo Outro mantém seu botão Responder visível no topo da área de opções. */
+.po-profile-page .po-other-input {width:100%;box-sizing:border-box;min-height:44px;flex:0 0 auto;}
+
+/* Footer padrão preservando a área fixa do chat */
+.po-profile-page .site-footer{flex:0 0 auto;padding:9px clamp(18px,3.3vw,42px);font-size:10px}
+.po-profile-page .site-footer .footer-inner{min-height:20px}
+@media(max-height:650px){.po-profile-page .site-footer{padding:5px 16px}}
+
+/* Acabamento do Hub: separação entre a grade de etapas e os atalhos inferiores.
+   Vale para o Hub expandido, recolhido e layouts compactos. */
+.po-profile-page .po-profile-hub { padding-bottom:8px; }
+.po-profile-page .po-profile-hub .po-hub-bottom {
+  margin-top:14px;
+  gap:8px;
+}
+.po-profile-page .po-profile-hub .po-hub-stages {
+  padding-bottom:5px;
+}
+
+/* Ajuste final: etapas compactas e estabilidade na animação de recolher. */
+.po-profile-page .po-profile-hub .po-hub-stage-grid {gap:6px;}
+.po-profile-page .po-profile-hub .po-hub-stage {height:28px;min-height:28px;border-radius:8px;font-size:10px;}
+.po-profile-page .po-profile-hub .po-hub-stages {min-height:0;transition:opacity .22s ease, padding .22s ease;}
+.po-profile-page .po-profile-hub.collapsed .po-hub-stages {flex:0 0 0;max-height:0;min-height:0;opacity:0;padding:0;overflow:hidden;pointer-events:none;}
+.po-profile-page .po-profile-hub .po-hub-top > button {flex:0 0 47px;}
+@media(max-width:800px){.po-profile-page .po-profile-hub .po-hub-stage {height:28px;min-height:28px;}}
+
+/* Avatar do chat: a mesma Maple Leaf vetorial do Header, com variante por tema. */
+.po-profile-page .po-bot-avatar .po-chat-brand-dark {display:none;}
+[data-theme="dark"] .po-profile-page .po-bot-avatar .po-chat-brand-light {display:none;}
+[data-theme="dark"] .po-profile-page .po-bot-avatar .po-chat-brand-dark {display:block;}
+
+/* Mobile browser experience: mantém chat e respostas no viewport sem scroll horizontal */
+@media(max-width:700px){
+ .po-profile-page{width:100%;max-width:100vw;overflow-x:clip}
+ .po-profile-page .po-profile-layout{min-width:0}
+ .po-profile-page .po-profile-main{min-width:0}
+ .po-profile-page .po-profile-top h1{font-size:clamp(17px,5vw,24px)}
+ .po-profile-page .po-profile-intro{min-width:0;border-radius:20px}
+ .po-profile-page .po-intro-text{padding:22px 20px}
+ .po-profile-page .po-intro-text h2{font-size:clamp(25px,7.2vw,36px)}
+ .po-profile-page .po-profile-chat{min-width:0}
+ .po-profile-page .po-chat-messages{overscroll-behavior:contain}
+ .po-profile-page .po-answer-slot{min-width:0}
+ .po-profile-page .po-answer-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .po-profile-page .po-answer-option{min-width:0;overflow-wrap:anywhere}
+}
+@media(max-width:390px){
+ .po-profile-page .po-profile-chat-footer span{font-size:10px}
+ .po-profile-page .po-answer-options{gap:7px}
+}
+
+/* English Profile: experiência mobile de chat em tela cheia e Hub flutuante */
+.po-mobile-hub-fab,.po-mobile-hub-scrim,.po-hub-mobile-heading,.po-hub-mobile-home,.po-back-mobile{display:none!important}
+@media(max-width:700px){
+ .po-profile-page{height:100dvh;min-height:0}
+ .po-profile-page .po-profile-layout{position:relative;flex:1;min-height:0}
+ .po-profile-page .po-profile-layout > main.po-profile-main{width:100%;flex:1;padding:10px 9px 6px;gap:8px;min-height:0}
+ .po-profile-page .po-profile-main > .po-profile-chat{flex:1;min-height:0;border-radius:13px;overflow:hidden}
+ .po-profile-page .po-profile-chat > footer.po-profile-chat-footer{flex-basis:48px;min-height:48px;max-height:48px;padding:0 12px}
+ .po-profile-page .po-back-hint,.po-profile-page .po-back-desktop{display:none!important}
+ .po-profile-page .po-back-mobile{display:inline!important}
+ .po-profile-page .po-back{display:inline-flex;align-items:center;gap:7px;font-size:12px}
+ .po-mobile-hub-fab{display:grid!important;place-items:center;position:fixed;left:11px;bottom:calc(82px + env(safe-area-inset-bottom) + var(--po-keyboard-offset,0px));z-index:190;width:46px;height:46px;border:1px solid #b98197;border-radius:50%;background:#6d2943;color:#fff;box-shadow:0 6px 24px rgba(20,3,10,.32);cursor:pointer}
+ .po-mobile-hub-fab svg{width:21px;height:21px;transform:rotate(180deg)}
+ .po-mobile-hub-fab[aria-expanded="true"] svg{transform:rotate(0)}
+ .po-mobile-hub-scrim{display:block!important;position:fixed;inset:0;z-index:180;border:0;background:rgba(14,6,11,.64);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+ .po-profile-page .po-profile-hub,.po-profile-page .po-profile-hub.collapsed{position:fixed;z-index:185;left:12px;top:calc(66px + env(safe-area-inset-top));bottom:calc(78px + env(safe-area-inset-bottom));width:min(318px,calc(100vw - 24px));max-height:calc(100dvh - 150px);padding:15px 12px;border:1px solid #70475a;border-radius:20px;box-shadow:0 18px 65px rgba(0,0,0,.4);transform:translateX(calc(-100% - 32px));visibility:hidden;transition:transform .26s ease,visibility .26s ease;overflow:hidden}
+ .po-profile-page .po-profile-hub.mobile-open,.po-profile-page .po-profile-hub.mobile-open.collapsed{transform:translateX(0);visibility:visible}
+ .po-profile-page .po-profile-hub .po-hub-label,.po-profile-page .po-profile-hub.collapsed .po-hub-label{display:inline;opacity:1;pointer-events:auto}
+ .po-profile-page .po-profile-hub .po-hub-stages{flex:1;max-height:none;opacity:1;padding:10px 8px;overflow-y:auto}
+ .po-profile-page .po-profile-hub .po-hub-stage-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+ .po-profile-page .po-profile-hub .po-hub-bottom{gap:5px}
+ .po-profile-page .po-profile-hub .po-hub-toggle{display:none}
+ .po-profile-page .po-hub-mobile-heading{display:flex!important;align-items:center;justify-content:space-between;padding:5px 10px 12px;color:#f5dce6;font-size:14px}
+ .po-profile-page .po-hub-mobile-heading button{min-height:30px;width:34px;display:grid;place-items:center;padding:0;font-size:24px}
+ .po-profile-page .po-hub-mobile-home{display:flex!important}
+ .po-profile-page .po-profile-intro{flex:1;min-height:0;overflow-y:auto}
+ .po-profile-page .po-profile-top{padding-left:51px;min-height:46px}
+ .po-profile-page .po-profile-top h1{font-size:clamp(18px,5vw,23px)}
+ .po-profile-page .po-profile-progress{min-width:78px}
+ .po-profile-page .po-profile-page .po-chat-messages{min-height:0}
+ [data-theme="light"] .po-profile-page .po-hub-mobile-heading{color:#663046}
+}
+@media(max-width:700px) and (max-height:650px){.po-mobile-hub-fab{bottom:calc(61px + env(safe-area-inset-bottom) + var(--po-keyboard-offset,0px))}}
+@media(prefers-reduced-motion:reduce){.po-profile-page .po-profile-hub{transition:none}}
+
+/* English Profile mobile: animated coin, enlarged stages, refined back control */
+@media(max-width:700px){
+ .po-profile-page .po-mobile-hub-fab{left:11px;transition:left .42s cubic-bezier(.2,.8,.2,1),transform .42s cubic-bezier(.2,.8,.2,1),box-shadow .3s;will-change:left,transform}
+ .po-profile-page .po-mobile-hub-fab svg{transition:transform .42s cubic-bezier(.2,.8,.2,1)}
+ .po-profile-page .po-mobile-hub-fab[aria-expanded="true"]{left:min(274px,calc(100vw - 62px));transform:rotate(360deg);box-shadow:0 8px 28px rgba(0,0,0,.38)}
+ .po-profile-page .po-mobile-hub-fab[aria-expanded="true"] svg{transform:rotate(0deg)}
+ .po-profile-page .po-profile-hub .po-hub-stage-grid{gap:7px}
+ .po-profile-page .po-profile-hub .po-hub-stage{height:39px;min-height:39px;font-size:12px;border-radius:10px}
+ .po-profile-page .po-profile-hub .po-hub-stages{padding-bottom:5px}
+ .po-profile-page .po-profile-hub .po-hub-bottom{margin-top:2px}
+ .po-profile-page .po-profile-chat-footer .po-back{transform:translateY(5px)}
+ .po-profile-page .po-profile-top>div:first-child{text-align:left;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){.po-profile-page .po-mobile-hub-fab,.po-profile-page .po-mobile-hub-fab svg{transition:none}}
+
+/* Mobile V3: ajustes finos */
+@media(max-width:700px){
+ .po-profile-page .po-mobile-hub-fab{bottom:calc(87px + env(safe-area-inset-bottom) + var(--po-keyboard-offset,0px))}
+ .po-profile-page .po-profile-top{padding-left:41px}
+ .po-profile-page .po-profile-chat-footer .po-back{transform:translateY(12px)}
+}
+@media(max-width:700px) and (max-height:650px){
+ .po-profile-page .po-mobile-hub-fab{bottom:calc(66px + env(safe-area-inset-bottom) + var(--po-keyboard-offset,0px))}
+}
+
+/* Mobile V4: introdução limpa e Hub com efeito de moeda */
+@media(max-width:700px){
+ .po-profile-page .po-intro-notes{display:none!important}
+ .po-profile-page .po-profile-intro{display:flex!important;flex-direction:column;align-items:stretch;justify-content:center;overflow:hidden}
+ .po-profile-page .po-intro-text{width:100%;max-width:none;flex:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(22px,6vw,34px)!important}
+ .po-profile-page .po-intro-text h2{font-size:clamp(31px,8vw,45px);line-height:1.13}
+ .po-profile-page .po-mobile-hub-fab{transition:left .48s cubic-bezier(.22,.86,.24,1),transform .48s cubic-bezier(.22,.86,.24,1),box-shadow .3s}
+ .po-profile-page .po-mobile-hub-fab[aria-expanded="true"]{transform:rotate(540deg)}
+ .po-profile-page .po-mobile-hub-fab[aria-expanded="false"]{transform:rotate(0deg)}
+ .po-profile-page .po-mobile-hub-fab[aria-expanded="true"] svg{transform:rotate(0deg)}
+ .po-profile-page .po-mobile-hub-fab[aria-expanded="false"] svg{transform:rotate(180deg)}
+}
+@media(prefers-reduced-motion:reduce){.po-profile-page .po-mobile-hub-fab{transition:none}}
+
+/* Mobile V5 — refinamento exclusivo da introdução (desktop preservado) */
+@media (max-width:700px) {
+  /* Título acima do cartão, alinhado mais à esquerda */
+  .po-profile-page .po-profile-top { padding-left:31px; }
+  /* Respiro maior entre os textos, sem eliminar o espaço vertical do painel */
+  .po-profile-page .po-intro-text { gap:clamp(12px,2.2vh,20px); }
+  .po-profile-page .po-intro-text h2 { margin:8px 0 10px; }
+  .po-profile-page .po-intro-text p { margin:0 0 12px; line-height:1.7; }
+  .po-profile-page .po-intro-text .po-start { margin-top:8px; }
+  /* O botão gira 540 graus; compensar a rotação no SVG mantém a seta à esquerda. */
+  .po-profile-page .po-mobile-hub-fab[aria-expanded="true"] svg { transform:rotate(180deg); }
+}
+
+/* Mobile V6: alinhamento final dos letreiros da introdução e do chat.
+   V5 usava 31px; deslocamento adicional de 20px à esquerda. */
+@media (max-width:700px) {
+  .po-profile-page .po-profile-top { padding-left:11px; }
+}

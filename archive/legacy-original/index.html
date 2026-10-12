@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#D6B6C0" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#150B0F" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<title>Plus One — Welcome student!</title>
+<link href="style.css" rel="stylesheet"/>
+<link href="common-header.css" rel="stylesheet"/><script defer="True" src="common-header.js"></script><link href="brand-v23.css" rel="stylesheet"/><link rel="stylesheet" href="quiz-theme.css" /></head>
+<body>
+<div class="page">
+<aside class="rail">
+
+<nav aria-label="Navegação" class="main-nav">
+<button class="nav-item active" id="homeTab" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg></span><span>Introdução</span></button>
+<button class="nav-item" id="diagnosticTab" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c0-4.5 3.3-7 7.5-7s7.5 2.5 7.5 7"/></svg></span><span>English Profile</span></button>
+</nav>
+<nav aria-label="Mais informações" class="utility-nav">
+<a class="utility-item" href="https://www.instagram.com/plus.one_school/" rel="noopener noreferrer" target="_blank">
+<span class="utility-icon"><svg viewbox="0 0 24 24"><rect height="17" rx="5" width="17" x="3.5" y="3.5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.8" fill="currentColor" r="1" stroke="none"></circle></svg></span>
+<span class="utility-copy"><strong>Conheça nosso Instagram</strong><small>Novidades e conteúdos</small></span>
+</a>
+<a class="utility-item" href="faq.html">
+<span class="utility-icon"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9.7 9a2.5 2.5 0 1 1 4.2 1.8c-1.1.9-1.9 1.3-1.9 2.7"></path><path d="M12 17.2h.01"></path></svg></span>
+<span class="utility-copy"><strong>Dúvidas frequentes</strong><small>Entenda o processo</small></span>
+</a>
+</nav>
+<div class="diagnostic-rail hidden" id="diagnosticRail">
+<div class="rail-title">ETAPAS</div>
+<div class="question-map" id="questionMap"></div>
+</div>
+<div class="rail-bottom" hidden aria-hidden="true">
+<span id="railLabel">ETAPA</span>
+<strong id="railProgress">até 25 perguntas</strong>
+</div>
+</aside>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<main class="main">
+<header class="topbar">
+<div>
+<p id="sectionLabel"></p>
+<h1 id="topTitle">Welcome student!</h1>
+</div>
+<div class="progress-wrap hidden" id="progressWrap">
+<span id="progressText">01 / 25</span>
+<div class="progress"><i id="progressBar"></i></div>
+</div>
+</header>
+<!-- Tela de introdução: pode ser acessada a qualquer momento sem apagar respostas. -->
+<section class="intro-screen" id="home">
+<div class="intro-content">
+<div class="intro-kicker">ENGLISH PROFILE</div>
+<h2>Seja bem-vindo à <span class="accent-word">análise de perfil</span> da Plus One</h2>
+<p>Vamos entender onde você está, o que você busca e como uma rotina de estudos personalizada pode ajudar você a evoluir no inglês</p>
+<button class="primary" id="homeStartBtn" type="button"><span id="homeStartLabel">Começar meu perfil</span> <b class="po-arrow-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg></b></button>
+<small>Leva menos de três minutos · até 25 perguntas</small>
+</div>
+<div class="intro-notes">
+<div class="note"><span class="note-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c0-4.5 3.3-7 7.5-7s7.5 2.5 7.5 7"/></svg></span><div><strong>Queremos te conhecer</strong><p>Conta pra gente sua experiência, rotina e os objetivos com o inglês</p></div></div>
+<div class="note"><span class="note-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/></svg></span><div><strong>Seja sincero</strong><p>Isso não é uma prova — quanto mais realista você for, melhor será seu plano de estudos</p></div></div>
+<div class="note"><span class="note-icon" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-3-2-6-2-9-1v13c3-1 6-1 9 1 3-2 6-2 9-1V6c-3-1-6-1-9 1Z"/><path d="M12 7v13"/></svg></span><div><strong>Como isso me ajuda?</strong><p>Com um caminho bem desenhado e personalizado, aprender inglês deixa de ser algo chato e se torna prazeroso</p></div></div>
+</div>
+</section>
+<!-- Questionário em formato de conversa, não de formulário. -->
+<section class="chat-card hidden" id="questionCard">
+<div aria-live="polite" class="chat-history" id="chatHistory"></div>
+<div class="chat-answer-area" id="answerArea"></div>
+<div class="chat-footer">
+<div class="po-question-nav"><button class="back-btn po-nav-prev" id="backBtn" type="button" aria-label="Pergunta anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg><span>Anterior</span></button><span id="saveHint">Use Anterior para editar uma resposta</span><button class="back-btn po-nav-next" id="nextQuestionBtn" type="button" aria-label="Próxima pergunta"><span>Próxima</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg></button></div>
+</div>
+</section>
+<section class="finish hidden" id="finish">
+<div class="finish-mark">✓</div>
+<p class="eyebrow">ENGLISH PROFILE</p>
+<h2>Diagnóstico concluído.</h2>
+<p class="po-finish-desc">Obrigado por compartilhar um pouco sobre você. Nossa equipe vai analisar suas respostas e, em breve, entrar em contato para compartilhar seu material e plano de estudos.</p>
+<button class="primary" id="restartBtn" type="button">Refazer diagnóstico (até 12h)</button><button class="primary" hidden="" id="retryBtn" type="button">Tentar envio novamente</button>
+</section>
+</main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

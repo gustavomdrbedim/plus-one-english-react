@@ -1,0 +1,155 @@
+/* ============================================================
+   PLUS ONE | QUESTIONÁRIO — IDENTIDADE VISUAL COMPARTILHADA
+   01. Cores | 02. Header | 03. Canhoto | 04. Chat | 05. Mobile
+   Este arquivo é carregado POR ÚLTIMO para sobrescrever os
+   estilos históricos sem alterar a lógica do questionário.
+   ============================================================ */
+
+/* 01 | Tokens equivalentes à institucional (modo claro) */
+:root,html[data-theme="light"] {
+  color-scheme:light;
+  --base:#f1b7c7; --deep:#89213d; --mid:#b73455;
+  --soft:#f4e5e9; --pale:#fff0f4; --paper:#fff9f9;
+  --ink:#41131f; --muted:#835f69; --line:#ecd8de; --white:#fff;
+}
+html[data-theme="dark"] {
+  color-scheme:dark;
+  --base:#f0b4c6; --deep:#85213b; --mid:#f0a6bc;
+  --soft:#4c2733; --pale:#301622; --paper:#1b0c12;
+  --ink:#fff0f3; --muted:#d5aeba; --line:#4c2733; --white:#301622;
+}
+html,body { background:var(--paper)!important; color:var(--ink); }
+body .main { background:var(--paper)!important; }
+
+/* 02 | Mesmo visual e proporções do header institucional */
+.po-global-header { background:var(--header,#f4e5e9)!important; color:var(--ink)!important; border-color:var(--line)!important; box-shadow:none!important; font-family:Montserrat,Arial,sans-serif!important; }
+.po-global-inner { max-width:1320px; min-height:68px; padding:10px clamp(18px,3.3vw,42px); gap:24px; }
+.po-global-logo { font-family:Montserrat,Arial,sans-serif; font-weight:900; letter-spacing:2px; }
+.po-global-logo img { width:36px; height:36px; }
+.po-global-links { margin-left:auto; gap:26px; }
+.po-global-links a,.po-global-enter { font-size:12px; font-weight:800; }
+.po-global-cta { background:#602039!important; color:#fff!important; border-radius:99px; padding:12px 17px; }
+html[data-theme="dark"] .po-global-header { background:#2c111d!important; }
+html[data-theme="dark"] .po-global-cta { background:#f0b4c6!important; color:#371321!important; }
+
+/* 03 | Canhoto: navegação e botão de recolher NA BASE */
+body.po-has-global .rail { background:var(--white)!important; border-color:var(--line)!important; padding-bottom:65px; }
+html[data-theme="dark"] body.po-has-global .rail { background:#301622!important; }
+body.po-has-global .rail .brand { display:none!important; }
+body.po-has-global .rail-collapse { top:auto!important; bottom:14px!important; right:14px!important; z-index:5; background:var(--soft)!important; color:var(--ink)!important; border-color:var(--line)!important; }
+body.po-has-global.po-rail-collapsed .rail-collapse { right:20px!important; }
+body.po-has-global .nav-item,body.po-has-global .utility-item { color:var(--muted); }
+body.po-has-global .nav-item.active { background:var(--soft)!important; color:var(--ink)!important; }
+body.po-has-global .nav-item:hover,body.po-has-global .utility-item:hover { background:var(--pale)!important; color:var(--ink)!important; }
+body.po-has-global .rail-bottom { margin-top:auto; }
+body.po-has-global .q-dot { background:var(--white)!important; color:var(--muted)!important; border-color:var(--line)!important; }
+body.po-has-global .q-dot.answered { background:var(--soft)!important; color:var(--ink)!important; }
+body.po-has-global .q-dot.current { background:var(--deep)!important; color:#fff!important; }
+
+/* 04 | Introdução, chat, respostas e finalização */
+.intro-screen,.chat-card { background:var(--white)!important; border-color:var(--line)!important; }
+.intro-content { background:linear-gradient(120deg,#90223f,#5b1429)!important; color:#fff!important; }
+.intro-content h2,.intro-content p { color:#fff!important; }
+.intro-notes,.chat-answer-area,.chat-footer { background:var(--white)!important; border-color:var(--line)!important; }
+.chat-history { background:linear-gradient(180deg,var(--paper),var(--white))!important; }
+.bot-bubble,.option,.text-input,.number-input,.ghost-btn { background:var(--white)!important; color:var(--ink)!important; border-color:var(--line)!important; }
+.user-bubble { background:var(--deep)!important; color:#fff!important; }
+.option:hover,.ghost-btn:hover { background:var(--pale)!important; }
+.option.selected { background:var(--soft)!important; color:var(--ink)!important; border-color:var(--mid)!important; }
+.primary { background:var(--base)!important; color:#371321!important; }
+.continue { background:var(--deep)!important; color:#fff!important; }
+.finish { background:linear-gradient(120deg,#90223f,#5b1429)!important; }
+html[data-theme="dark"] .intro-notes,html[data-theme="dark"] .chat-card,html[data-theme="dark"] .chat-answer-area,html[data-theme="dark"] .chat-footer { background:#301622!important; }
+html[data-theme="dark"] .bot-bubble,html[data-theme="dark"] .option,html[data-theme="dark"] .text-input,html[data-theme="dark"] .number-input,html[data-theme="dark"] .ghost-btn { background:#301622!important; }
+
+/* 05 | Responsividade: não esconder controles essenciais */
+@media(max-width:740px) {
+  .po-global-inner { min-height:62px; padding:9px 13px; gap:9px; }
+  .po-global-logo img { width:34px; height:34px; }
+  .po-global-links,.po-global-enter { display:none; }
+  .po-global-actions { margin-left:auto; }
+}
+@media(max-width:650px) {
+  body.po-has-global .rail { position:relative; padding-bottom:62px; }
+  body.po-has-global .rail-collapse { display:flex; }
+  body.po-has-global.po-rail-collapsed .rail .main-nav,
+  body.po-has-global.po-rail-collapsed .rail .utility-nav,
+  body.po-has-global.po-rail-collapsed .rail .diagnostic-rail,
+  body.po-has-global.po-rail-collapsed .rail .rail-bottom { display:none!important; }
+}
+
+/* ============================================================
+   PLUS ONE | AJUSTES DE ACABAMENTO — ENGLISH PROFILE
+   06 | Painel de orientações, ícones e tipografia
+   07 | Transição suave do canhoto no desktop
+   Alterar estas regras não modifica a lógica do questionário.
+   ============================================================ */
+
+/* 06 | A coluna das orientações permanece Bordeaux nos DOIS temas.
+   Só a área externa da página acompanha o modo claro/escuro. */
+html[data-theme="light"] .intro-notes,
+html[data-theme="dark"] .intro-notes {
+  background:#301622!important;
+  color:#fff0f3!important;
+  border-color:#4c2733!important;
+}
+.intro-notes .note { border-color:rgba(255,240,243,.17)!important; }
+.intro-notes .note strong { color:#fff0f3!important; }
+.intro-notes .note p { color:#e4c2cc!important; }
+.intro-notes .note-icon {
+  display:grid; place-items:center;
+  width:35px; height:35px; border-radius:11px;
+  background:#5d2b3d!important; color:#ffd6e2!important;
+  font-size:19px; line-height:1;
+}
+.intro-notes .note-icon svg { width:23px; height:23px; }
+/* O título da introdução deixa de ter negrito, sem mudar os outros títulos. */
+.intro-content h2, .intro h1 { font-weight:400!important; }
+
+/* 07 | Canhoto: largura e conteúdo transitam de forma mais fluida. */
+@media(min-width:651px) {
+  body.po-has-global .rail {
+    transition:width .34s cubic-bezier(.22,1,.36,1),
+               padding .34s cubic-bezier(.22,1,.36,1)!important;
+  }
+  body.po-has-global .main {
+    transition:margin-left .34s cubic-bezier(.22,1,.36,1),
+               width .34s cubic-bezier(.22,1,.36,1)!important;
+  }
+  body.po-has-global .rail .nav-item>span:not(.nav-icon),
+  body.po-has-global .rail .utility-copy {
+    opacity:1; transition:opacity .16s ease;
+  }
+  /* Evita que os textos sumam abruptamente durante o recolhimento. */
+  body.po-has-global.po-rail-collapsed .rail .nav-item>span:not(.nav-icon),
+  body.po-has-global.po-rail-collapsed .rail .utility-copy {
+    display:block!important; opacity:0; width:0; max-width:0;
+    overflow:hidden; white-space:nowrap; pointer-events:none;
+  }
+  body.po-has-global .rail .nav-item,
+  body.po-has-global .rail .utility-item { min-width:0; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.po-has-global .rail, body.po-has-global .main,
+  body.po-has-global .rail .nav-item>span:not(.nav-icon),
+  body.po-has-global .rail .utility-copy { transition:none!important; }
+}
+
+
+/* 08 | AVATAR DA ESCOLA NO CHAT MOBILE */
+.bot-mark {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #301622 !important;
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  overflow: hidden;
+}
+.bot-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* Avatar discreto: fundo Bordeaux escuro e somente contorno */
+.bot-mark { background:#301622!important; border:1px solid #835a69!important; box-shadow:none!important; }

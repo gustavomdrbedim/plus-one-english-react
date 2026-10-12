@@ -1,0 +1,4 @@
+import { ApprovedMarkup } from '../../../components/ui/ApprovedMarkup';
+// Bloco aprovado: edite apenas este conteúdo ao trabalhar nesta seção.
+const markup = "<section class=\"section\" id=\"sobre-nos\">\n<div class=\"video-area\">\n<div>\n<span class=\"eyebrow\">\n       Uma mensagem da Plus One\n      </span>\n<h2>\n       Conheça a ideia por trás da escola\n      </h2>\n<p>\n       Entenda como a nossa forma de organizar os estudos pode ajudar você a alcançar seus objetivos, respeitando seu tempo e suas prioridades\n      </p>\n</div>\n<div aria-label=\"Espaço reservado para vídeo de apresentação\" class=\"video-box\">\n<div>\n<div class=\"play\">\n        ▶\n       </div>\n<strong>\n        Em breve: conheça a Plus One\n       </strong>\n<small>\n        Espaço reservado para o vídeo institucional\n       </small>\n</div>\n</div>\n</div>\n</section>";
+export default function SobreNos() { return <ApprovedMarkup html={markup} />; }

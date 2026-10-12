@@ -1,0 +1,47 @@
+
+/* Plus One V21: navegação institucional compartilhada */
+.po-global-header{position:sticky;top:0;z-index:900;background:#F2E3E7;color:#341A24;border-bottom:1px solid #E6C3CF;font-family:Helvetica,sans-serif;box-shadow:0 3px 14px #3414200b}
+.po-global-inner{max-width:1360px;margin:auto;min-height:64px;padding:9px 24px;display:flex;align-items:center;gap:20px}
+.po-global-logo{display:flex;align-items:center;gap:10px;font:800 12px Manrope,sans-serif;letter-spacing:1.7px;text-decoration:none;color:inherit;white-space:nowrap}
+.po-global-logo img{height:42px;width:42px;object-fit:contain}
+.po-global-links{display:flex;align-items:center;gap:20px;margin-left:auto}.po-global-links a,.po-global-enter{font-size:12px;font-weight:800;text-decoration:none;color:inherit;white-space:nowrap}
+.po-global-actions{display:flex;align-items:center;gap:10px}.po-global-cta{border-radius:999px;background:#341A24;color:white!important;padding:11px 16px;text-decoration:none;font-size:12px;font-weight:800;white-space:nowrap}
+.po-global-menu{display:none;background:transparent;border:1px solid #C7A9B3;border-radius:10px;font-size:20px;padding:5px 10px;color:inherit}
+.po-global-mobile{display:none}.po-global-header .theme-toggle{width:58px;min-width:58px;height:32px;padding:3px;border:0;background:transparent;cursor:pointer}
+.po-global-header .theme-track{display:block;width:52px;height:27px;border-radius:99px;background:#E1BFCA;border:1px solid #BA93A0;position:relative;transition:background .2s}
+.po-global-header .theme-track .sun,.po-global-header .theme-track .moon{position:absolute;top:3px;font-size:15px;line-height:20px}
+.po-global-header .theme-track .sun{left:5px;color:#946b29}.po-global-header .theme-track .moon{right:6px;color:#F6E7EB}
+.po-global-header .theme-thumb{position:absolute;left:3px;top:3px;width:19px;height:19px;border-radius:50%;background:white;box-shadow:0 2px 5px #0003;transition:transform .22s}
+html[data-theme=dark] .po-global-header{background:#321C24;color:#F8E9ED;border-color:#4F3840}html[data-theme=dark] .po-global-header .po-global-cta{background:#F1E3E6;color:#341B24!important}
+html[data-theme=dark] .po-global-header .theme-track{background:#583743;border-color:#896572}html[data-theme=dark] .po-global-header .theme-thumb{transform:translateX(24px)}
+@media(max-width:850px){.po-global-links{gap:11px}.po-global-inner{padding:9px 13px;gap:9px}.po-global-links a{font-size:10px}}
+@media(max-width:740px){.po-global-links,.po-global-enter{display:none}.po-global-actions{margin-left:auto}.po-global-menu{display:block}.po-global-logo{font-size:11px}.po-global-logo img{height:34px;width:34px}.po-global-cta{font-size:11px;padding:10px}.po-global-mobile.open{display:flex;flex-direction:column;padding:6px 20px 15px;gap:0;border-top:1px solid #C7A9B366}.po-global-mobile a{padding:12px 3px;border-bottom:1px solid #C7A9B366;text-decoration:none;color:inherit;font-size:13px;font-weight:700}}
+@media(max-width:370px){.po-global-inner{gap:5px}.po-global-logo{letter-spacing:0}.po-global-cta{font-size:10px;padding:9px}.po-global-header .theme-toggle{min-width:49px;width:49px}.po-global-header .theme-track{width:47px}.po-global-header .theme-thumb{width:19px}html[data-theme=dark] .po-global-header .theme-thumb{transform:translateX(19px)}}
+/* Desktop: trilho recolhível, sem esconder conteúdo */
+@media(min-width:651px){body.po-has-global .rail{top:64px;height:calc(100vh - 64px);transition:width .25s ease,padding .25s ease}body.po-has-global .main{transition:margin-left .25s ease,width .25s ease}body.po-has-global.po-rail-collapsed .rail{width:72px;padding-left:9px;padding-right:9px}body.po-has-global.po-rail-collapsed .main{margin-left:72px;width:calc(100% - 72px)}body.po-rail-collapsed .rail .brand,body.po-rail-collapsed .rail .nav-item>span:not(.nav-icon),body.po-rail-collapsed .rail .utility-copy,body.po-rail-collapsed .rail .rail-bottom,body.po-rail-collapsed .rail .diagnostic-rail{display:none!important}body.po-rail-collapsed .rail .nav-item{justify-content:center}body.po-rail-collapsed .rail .utility-item{justify-content:center}body.po-has-global .rail-collapse{display:flex}}
+.rail-collapse{display:none;position:absolute;top:12px;right:8px;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--line,#E6C3CF);background:var(--soft,#F2E3E7);color:var(--deep,#5D3544);border-radius:9px;cursor:pointer;font-size:17px;z-index:2}
+@media(min-width:651px){body.po-rail-collapsed .rail-collapse{right:21px}}
+
+/* V22 typography */
+html,body,button,input,textarea,select{font-family:Helvetica,Arial,sans-serif!important}
+
+.po-global-logo{font-weight:400!important}
+.po-global-enter,.po-global-links a{transition:color .2s ease}
+.po-global-enter:hover,.po-global-links a:hover{color:#d88aa8!important}
+
+/* Header: medidas e alinhamento da pagina institucional, acima do hub */
+.po-global-header{position:relative!important;z-index:2000!important;background:#f4e5e9!important;color:#41131f!important;border-bottom:1px solid #ecd8de!important;box-shadow:none!important}
+html[data-theme="dark"] .po-global-header{background:#2c111d!important;color:#fff0f3!important;border-color:#4c2733!important}
+.po-global-inner{max-width:1320px!important;min-height:68px!important;padding:10px clamp(18px,3.3vw,42px)!important;gap:24px!important;justify-content:space-between!important}
+.po-global-logo{gap:11px!important;font-size:12px!important;font-weight:400!important;letter-spacing:2px!important}
+.po-global-logo img{width:36px!important;height:36px!important}
+.po-global-links{gap:26px!important}
+.po-global-links a,.po-global-enter{font-size:12px!important;font-weight:800!important}
+.po-global-actions{gap:15px!important}
+.po-global-cta{background:#602039!important;color:#fff!important;border-radius:99px!important;padding:12px 17px!important;font-size:12px!important;font-weight:800!important;transition:transform .2s ease,filter .2s ease!important}
+.po-global-cta:hover{transform:translateY(-1px);filter:brightness(.97)}
+html[data-theme="dark"] .po-global-cta{background:#602039!important;color:#fff!important}
+.po-global-enter:hover,.po-global-links a:hover{color:#d88aa8!important}
+@media(max-width:980px){.po-global-links{gap:14px!important}}
+@media(max-width:740px){.po-global-links,.po-global-enter{display:none!important}.po-global-inner{min-height:62px!important;gap:12px!important}.po-global-actions{margin-left:auto!important;gap:8px!important}.po-global-cta{font-size:10px!important;padding:10px 12px!important}.po-global-menu{display:block!important}}
+@media(min-width:651px){body.po-has-global .rail{top:68px!important;height:calc(100dvh - 68px)!important;z-index:20!important}}
